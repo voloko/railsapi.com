@@ -105,18 +105,18 @@ h3
 
 .features
 {
-    margin-bottom: 50px;
 }
 
 .features li
 {
-    display: -moz-inline-block;
-    display: inline-block;
+    float: left;
     width: 33%;
 }
 
 .copy
 {
+    clear: both;
     font-size: 0.76em;
     margin-bottom: 20px;
+    padding-top: 50px;
 }
