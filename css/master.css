@@ -51,7 +51,7 @@ h3
     margin-bottom: 30px;
 }
 
-.download-c
+.actions
 {
     margin-left: 257px;
     width: 382px;
@@ -62,37 +62,37 @@ h3
     margin-bottom: 50px;
 }
 
-.download-c a
+.actions a
 {
     font-size: 1.26em;
 }
 
-.download-c p
+.actions p
 {
     margin-top: 0.4em;
     font-size: 0.76em;
 }
 
-.download-c .download
+.actions .download
 {
     position: absolute;
     left: 24px;
     top: 22px;
 }
 
-.download-c .download img
+.actions .download img
 {
     vertical-align: bottom;
 }
 
-.download-c .browse
+.actions .browse
 {
     position: absolute;
     left: 210px;
     top: 22px;
 }
 
-.download-c .note
+.actions .note
 {
     position: absolute;
     left: 420px;
@@ -101,6 +101,18 @@ h3
     color:#666;
     white-space: nowrap;
     line-height: 1.2;
+}
+
+.actions .mail
+{
+    position: absolute;
+    left: -257px;
+    top: 22px;
+    padding-right: 20px;
+    background: url(../i/mail.png) no-repeat;
+    background-position: 100% 50%;
+    font-size: 0.76em;
+    margin-top: 0.35em;
 }
 
 .features
