@@ -1,0 +1,122 @@
+body {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.body
+{
+    margin: 0 auto;
+    padding-left: 20px;
+    max-width: 1300px;
+}
+a
+{
+    color:#3875D7;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 270px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+h1 sup
+{
+    font-size: 0.5em;
+    position: relative;
+    bottom: 1em;
+    color:#009900;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+h3
+{
+    font-size: 0.76em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.promo
+{
+    background: url(../i/promo.png);
+    background-repeat: no-repeat;
+    height: 661px;
+    margin-bottom: 30px;
+}
+
+.download-c
+{
+    margin-left: 257px;
+    width: 382px;
+    height: 89px;
+    background: url(../i/download_bg.png);
+    position: relative;
+    top: 0; left: 0;
+    margin-bottom: 50px;
+}
+
+.download-c a
+{
+    font-size: 1.26em;
+}
+
+.download-c p
+{
+    margin-top: 0.4em;
+    font-size: 0.76em;
+}
+
+.download-c .download
+{
+    position: absolute;
+    left: 24px;
+    top: 22px;
+}
+
+.download-c .download img
+{
+    vertical-align: bottom;
+}
+
+.download-c .browse
+{
+    position: absolute;
+    left: 210px;
+    top: 22px;
+}
+
+.download-c .note
+{
+    position: absolute;
+    left: 420px;
+    top: 22px;
+    font-size: 0.76em;
+    color:#666;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.features
+{
+    margin-bottom: 50px;
+}
+
+.features li
+{
+    display: -moz-inline-block;
+    display: inline-block;
+    width: 33%;
+}
+
+.copy
+{
+    font-size: 0.76em;
+    margin-bottom: 20px;
+}
