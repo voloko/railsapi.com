@@ -100,19 +100,24 @@ h3
     font-size: 0.76em;
     color:#666;
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
-.actions .mail
+.actions .feedback
 {
     position: absolute;
     left: -257px;
-    top: 22px;
-    padding-right: 20px;
-    background: url(../i/mail.png) no-repeat;
-    background-position: 100% 50%;
+    top: 20px;
     font-size: 0.76em;
     margin-top: 0.35em;
+    line-height: 1.4;
+}
+
+.actions .feedback .mail
+{
+    background: url(../i/mail.png) no-repeat;
+    background-position: 100% 50%;
+    padding-right: 20px;
 }
 
 .features
