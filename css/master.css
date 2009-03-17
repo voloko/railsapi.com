@@ -18,6 +18,12 @@ h1 {
     font-weight: normal;
     margin-left: 270px;
     margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+p.slogan {
+    margin-left: 270px;
+    font-size: 0.76em;
     margin-bottom: 80px;
 }
 
@@ -43,11 +49,16 @@ h3
     margin-bottom: 8px;
 }
 
+h3 i
+{
+    font-weight: normal;
+}
+
 .promo
 {
     background: url(../i/promo.png);
     background-repeat: no-repeat;
-    height: 661px;
+    height: 627px;
     margin-bottom: 30px;
 }
 
@@ -108,10 +119,15 @@ h3
     position: absolute;
     left: -257px;
     top: 20px;
-    font-size: 0.76em;
     margin-top: 0.35em;
-    line-height: 1.4;
 }
+
+.actions .feedback a
+{
+    line-height: 1.4;
+    font-size: 0.76em;
+}
+
 
 .actions .feedback .mail
 {
@@ -120,6 +136,15 @@ h3
     padding-right: 20px;
 }
 
+.actions .version
+{
+    position: absolute;
+    right: 7px;
+    top: -1em;
+    font-size: 0.76em;
+}
+
+
 .features
 {
 }
@@ -127,7 +152,35 @@ h3
 .features li
 {
     float: left;
-    width: 33%;
+    width: 320px;
+    height: 340px;
+}
+
+.keys table
+{
+    border-collapse: collapse;
+    font-size: 0.76em;
+    margin: 0 20px 0.3em 0;
+}
+
+.keys table th,
+.keys table td
+{
+    padding: 0 0 1em 0;
+    text-align: left;
+}
+
+.keys table th
+{
+    padding-right: 1em;
+    text-align: right;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.keys p
+{
+    font-size: 0.76em;
 }
 
 .copy
@@ -135,5 +188,5 @@ h3
     clear: both;
     font-size: 0.76em;
     margin-bottom: 20px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
