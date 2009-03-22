@@ -3,6 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<title>Rails Searchable API Doc</title>
+	<script type="text/javascript" charset="utf-8">
+	    (function() {
+	        var id = '';
+            if (navigator.platform.indexOf('Mac') != -1) {
+                id = "mac";
+            } else {
+                if (navigator.userAgent.indexOf('Chrome') != -1) {
+                    id = "win-chrome";
+                } else {
+                    id = "win";
+                }
+            }
+            document.documentElement.id = id;
+	    })();
+	</script>
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 </head>
@@ -11,14 +26,15 @@
     <h1>Rails <b>S</b>ea<b>rch</b>able API Doc <sup>alpha :)</sup></h1>
     <p class="slogan">Smart search,  beautifully packed</p>
     <div class="actions">
-        <div class="feedback">
-            <span class="mail"><a href="mailto:voloko@gmail.com?subject=Sdoc feedback">Send feedback</a></span><br />
+        <div class="links">
+            <a href="http://github.com/voloko/sdocrails/">Code on GitHub</a><br />
+            <a href="http://sdoc.lighthouseapp.com/">Bugs on Lighthouse</a><br />
             <a href="http://www.twitter.com/voloko">Follow me on twitter</a>
         </div>
         <div class="version">Rails v2.3.2</div>
         <div class="download">
             <a href="rdoc.zip">Download</a> <img src="i/download.png" height="17" width="17">
-            <p>Zip, 2.10 MB</p>
+            <p>Zip, 2.27 MB</p>
         </div>
         <div class="browse">
             <a href="rdoc/">Browse online</a>
@@ -28,30 +44,40 @@
             Internet Explorer is currently unsupported
         </div>
     </div>
-    <div class="promo"></div>
+    <div class="promo promo_mac mac"></div>
+    <div class="promo promo_win win"></div>
+    <div class="promo promo_win-chrome win-chrome"></div>
     
     <div class="features">
         <h2>Features</h2>
         <ul>
             <li>
                 <h3>Browse through classes and modules</h3>
-                <img src="i/browse.png" />
+                <img src="i/browse.png" class="mac" />
+                <img src="i/win/browse.png" class="win" />
+                <img src="i/win-chrome/browse.png" class="win-chrome" />
             </li>
             <li>
                 <h3>Smart match</h3>
-                <img src="i/smart.png" />
+                <img src="i/smart.png" class="mac" />
+                <img src="i/win/smart.png" class="win" />
+                <img src="i/win-chrome/smart.png" class="win-chrome" />
             </li>
-            <li>
+            <li class="mac">
                 <h3>Recent searches <i>(only in Safari)</i></h3>
                 <img src="i/recent.png" />
             </li>
             <li>
                 <h3>Find files</h3>
-                <img src="i/files.png" />
+                <img src="i/files.png" class="mac" />
+                <img src="i/win/files.png" class="win" />
+                <img src="i/win-chrome/files.png" class="win-chrome" />
             </li>
             <li>
                 <h3>Refine with namespace</h3>
-                <img src="i/refine.png" />
+                <img src="i/refine.png" class="mac" />
+                <img src="i/win/refine.png" class="win" />
+                <img src="i/win-chrome/refine.png" class="win-chrome" />
             </li>
             <li class="keys">
                 <h3>Keyboard navigation</h3>
@@ -82,7 +108,7 @@
         </ul>
     </div>
     <div class="copy">
-        &copy; 2009 Vladimir Kolesnikov
+        &copy; 2009 Vladimir Kolesnikov | <span class="mail"><a href="mailto:voloko@gmail.com?subject=Sdoc feedback">Send feedback</a></span>
     </div>
     </div>
 </body>

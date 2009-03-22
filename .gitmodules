@@ -1,0 +1,3 @@
+[submodule "sdoc"]
+	path = sdoc
+	url = git://github.com/voloko/sdoc.git

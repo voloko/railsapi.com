@@ -62,6 +62,18 @@ h3 i
     margin-bottom: 30px;
 }
 
+.promo_win
+{
+    background: url(../i/win/promo.png);
+    background-repeat: no-repeat;
+}
+
+.promo_win-chrome
+{
+    background: url(../i/win-chrome/promo.png);
+    background-repeat: no-repeat;
+}
+
 .actions
 {
     margin-left: 257px;
@@ -114,27 +126,20 @@ h3 i
     line-height: 1.4;
 }
 
-.actions .feedback
+.actions .links
 {
     position: absolute;
     left: -257px;
-    top: 20px;
+    top: 7px;
     margin-top: 0.35em;
 }
 
-.actions .feedback a
+.actions .links a
 {
     line-height: 1.4;
     font-size: 0.76em;
 }
 
-
-.actions .feedback .mail
-{
-    background: url(../i/mail.png) no-repeat;
-    background-position: 100% 50%;
-    padding-right: 20px;
-}
 
 .actions .version
 {
@@ -144,6 +149,12 @@ h3 i
     font-size: 0.76em;
 }
 
+.mail
+{
+    background: url(../i/mail.png) no-repeat;
+    background-position: 100% 50%;
+    padding-right: 20px;
+}
 
 .features
 {
@@ -189,4 +200,15 @@ h3 i
     font-size: 0.76em;
     margin-bottom: 20px;
     padding-top: 30px;
+}
+
+
+#win .win-chrome,
+#win .mac,
+#mac .win,
+#mac .win-chrome,
+#win-chrome .mac,
+#win-chrome .win
+{
+    display: none;
 }
