@@ -48,6 +48,7 @@ task :doc_for_version do
   options << '--inline-source'
   options << '-A cattr_accessor=object'
   options << '--charset' << 'utf-8'
+  options << '--github_url' << 'http://github.com/rails/rails'
   rg.in_rails_dir do
     FileUtils.cp 'railties/README', './README'
     options << './README'
