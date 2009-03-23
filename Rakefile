@@ -56,6 +56,7 @@ task :doc_for_version do
     FileUtils.rm './README'
   end
   
+  `zip -r public/doc/#{v.to_tag}/rdoc public/doc/#{v.to_tag}/`
   rg.add_generated_version(v)
 end
 
