@@ -31,7 +31,7 @@ module SDocSite
     
     def co_version(version)
       in_rails_dir do
-        `git co #{version.to_tag}`
+        `git checkout #{version.to_tag}`
       end
     end
     
