@@ -49,8 +49,11 @@ task :doc_for_version do
   options << '-A cattr_accessor=object'
   options << '--charset' << 'utf-8'
   rg.in_rails_dir do
+    FileUtils.cp 'railties/README', './README'
+    options << './README'
     options += file_list
     RDoc::RDoc.new.document(options)
+    FileUtils.rm './README'
   end
   
   rg.add_generated_version(v)
