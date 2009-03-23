@@ -53,7 +53,8 @@ module SDocSite
     def generated_versions
       versions = []
       if File.exists? 'versions.yaml'
-        versions = YAML::load('versions.yaml')[:versions].map {|v| SDocSite::Version.new(v) }
+        data = YAML::load('versions.yaml')
+        versions = data[:versions].map {|v| SDocSite::Version.new(v) }
       end
       versions
     end
@@ -61,10 +62,13 @@ module SDocSite
     def add_generated_version(version)
       versions = generated_versions
       unless versions.include? version.to_tag
-        versions << version.to_tag
+        versions << version
       end
       File.open('versions.yaml', 'w') do |f|
-        f.write(versions.map{|v| v.to_tag}.to_yaml) 
+        data = {
+          :versions => versions.map{|v| v.to_tag}
+        }
+        f.write(data.to_yaml) 
       end
     end
     

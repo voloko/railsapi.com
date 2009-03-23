@@ -55,3 +55,14 @@ task :doc_for_version do
   
   rg.add_generated_version(v)
 end
+
+task :add_generated_version do 
+  rg = SDocSite::RailsGit.new('rails')
+  v = ENV['version']
+  if v.nil?
+    v = rg.all_versions.last
+  else
+    v = SDocSite::Version.new(v)
+  end
+  rg.add_generated_version(v)
+end
