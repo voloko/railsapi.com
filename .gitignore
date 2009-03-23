@@ -1,3 +1,6 @@
 .DS_Store
 rdoc/
 rdoc.zip
+rails/
+public/doc/
+versions.yaml
