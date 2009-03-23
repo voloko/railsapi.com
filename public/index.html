@@ -20,6 +20,27 @@
 	</script>
 	<script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="versions.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	   $(function() {
+	       $list = $('#version .list');
+	       for (var i=0, l = versions.length; i < l; i++) {
+	           var li = document.createElement('li');
+	           li.innerHTML = 'Rails ' + versions[i].name;
+	           $list.append(li);
+	           $(li).data('version', versions[i]);
+	           $(li).click(function() {
+	               var version = $(this).data('version');
+	               $('#version .selector').html('Rails ' + version.name);
+	               $('#size').html('Zip, ' + version.size + ' MB');
+	               $('#browse').attr('href', version.browse);
+	               $('#download').attr('href', version.download);
+	               $list.hide();
+	           })
+	       };
+	       $('#version .selector').click(function() {$list.show()})
+	       
+	   })
+	</script>
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 </head>
@@ -33,13 +54,18 @@
             <a href="http://sdoc.lighthouseapp.com/">Bugs on Lighthouse</a><br />
             <a href="http://www.twitter.com/voloko">Follow me on twitter</a>
         </div>
-        <div class="version">Rails v2.3.2</div>
+        <div class="version" id="version">
+            <span class="selector">Rails v2.3.2</span>
+            <ul class="list" style="display: none">
+                
+            </ul>
+        </div>
         <div class="download">
-            <a href="rdoc.zip">Download</a> <img src="i/download.png" height="17" width="17">
-            <p>Zip, 2.27 MB</p>
+            <a href="/doc/v2.3.2/rdoc.zip" id="download">Download</a> <img src="i/download.png" height="17" width="17">
+            <p id="size">Zip, 2.32 MB</p>
         </div>
         <div class="browse">
-            <a href="rdoc/">Browse online</a>
+            <a href="/doc/v2.3.2/" id="browse">Browse online</a>
         </div>
         <div class="note">
             Tested with Safari 4, Firefox 3, Opera 9.5<br />
