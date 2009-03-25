@@ -60,15 +60,62 @@ h3 i
     background-repeat: no-repeat;
     height: 627px;
     margin-bottom: 30px;
+    font-size: 0.8em;
+    line-height: 1.3em;
+    position: relative;
+    left: 0; top: 0;
 }
 
-.promo_win
+.promo .slogan
+{
+    position: absolute;
+    left: 0;
+    top: 62px;
+}
+
+.promo .q1,
+.promo .q2,
+.promo .q3
+{
+    position: absolute;
+    text-align: right;
+    width: 210px;
+    left: 0;
+    top: 194px;
+}
+
+.promo .q2
+{
+    top: 370px;
+}
+
+.promo .q3
+{
+    top: 518px;
+}
+
+#mac .promo .q1
+{
+    top: 167px;
+}
+
+#mac .promo .q2
+{
+    top: 342px;
+}
+
+#mac .promo .q3
+{
+    top: 512px;
+}
+
+#win .promo
 {
     background: url(../i/win/promo.png);
     background-repeat: no-repeat;
 }
 
-.promo_win-chrome
+#win-chrome .promo
 {
     background: url(../i/win-chrome/promo.png);
     background-repeat: no-repeat;
