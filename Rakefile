@@ -1,11 +1,11 @@
 $KCODE = 'UTF-8'
 
 $:.unshift "#{File.dirname(__FILE__)}/lib"
+require 'rubygems'
 require 'rake/testtask'
 require "sdoc_site/rails_git"
 require 'rake/rdoctask'
-require 'sdoc/lib/sdoc'
-require 'rdoc/rdoc'
+require 'sdoc'
 require 'fileutils'
 
 task :default => :test
@@ -45,15 +45,13 @@ task :doc_for_version do
   options << "-o" << path
   options << "--title" << "Ruby on Rails Documentation"
   options << '--line-numbers' 
-  options << '--inline-source'
-  options << '-A cattr_accessor=object'
   options << '--charset' << 'utf-8'
-  options << '--github_url' << 'http://github.com/rails/rails'
   
   rg.in_rails_dir do
     FileUtils.cp 'railties/README', './README'
     options << './README'
     options += file_list
+    p options
     RDoc::RDoc.new.document(options)
     FileUtils.rm './README'
   end
@@ -72,3 +70,6 @@ task :add_generated_version do
   end
   rg.add_generated_version(v)
 end
+
+
+`~/code/sdoc/bin/sdoc -N -o rdoc -x irb/output-method.rb -x ext/win32ole/tests/ -x ext/win32ole/sample/ README *.c *.h lib/ ext/`

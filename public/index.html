@@ -19,26 +19,29 @@
 	    })();
 	</script>
 	<script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/selector.js" type="text/javascript" charset="utf-8"></script>
 	<script src="versions.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
+        versions = [
+            {name: 'Ruby', href: 'ruby', versions: ['1.8', '1.9']},
+            {name: 'Rails', href: 'rails', versions: ['2.3.2', '2.2.2', '2.1.2']},
+            {name: 'Json', href: 'json', versions: ['1.1.3']},
+            {name: 'Haml', href: 'haml', versions: ['2.1.0', '1.9.1']},
+            {name: 'Hpricot', href: 'hpricot', versions: ['1.1.3']},
+            {name: 'Nokogiri', href: 'nokogiri', versions: ['1.1.3']},
+            {name: 'Rack', href: 'rack', versions: ['1.1.3']},
+            {name: 'RedCloth', href: 'redcloth', versions: ['1.1.3']},
+            {name: 'RSpec', href: 'rspec', versions: ['1.1.3']}
+        ];
+        
+        sizes = {
+            'rails-v2.3.2': '2.32 Mb',
+            'rails-v2.3.2_ruby-v1.8': '5.80 Mb',
+            'rails-v2.3.2_ruby-v1.8_rack-v1.1.3_redcloth-v1.1.3': '6.23 Mb'
+        };
+
 	   $(function() {
-	       $list = $('#version .list');
-	       for (var i=0, l = versions.length; i < l; i++) {
-	           var li = document.createElement('li');
-	           li.innerHTML = 'Rails ' + versions[i].name;
-	           $list.append(li);
-	           $(li).data('version', versions[i]);
-	           $(li).click(function() {
-	               var version = $(this).data('version');
-	               $('#version .selector').html('Rails ' + version.name);
-	               $('#size').html('Zip, ' + version.size + ' MB');
-	               $('#browse').attr('href', version.browse);
-	               $('#download').attr('href', version.download);
-	               $list.hide();
-	           })
-	       };
-	       $('#version .selector').click(function() {$list.show()})
-	       
+	       $('#versions').versionSelector(versions, sizes);
 	   })
 	</script>
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8" />
@@ -48,17 +51,18 @@
     <div class="body">
     <h1>Rails <b>S</b>ea<b>rch</b>able API Doc <sup>alpha :)</sup></h1>
     <p class="slogan">Smart search,  beautifully packed</p>
+    <div class="versions" id="versions">
+        <div class="presets">
+            <span class="preset preset_rails preset_selected"><span>Rails v2.3</span></span> or 
+            <span class="preset preset_ruby"><span>Rails v2.3 + Ruby 1.8</span></span> or
+            <span class="preset"><span>select some gems</span></span>
+        </div>
+    </div>
     <div class="actions">
         <div class="links">
             <a href="http://github.com/voloko/sdoc/">Code on GitHub</a><br />
             <a href="http://sdoc.lighthouseapp.com/">Bugs on Lighthouse</a><br />
             <a href="http://www.twitter.com/voloko">Follow me on twitter</a>
-        </div>
-        <div class="version" id="version">
-            <span class="selector">Rails v2.3.2</span>
-            <ul class="list" style="display: none">
-                
-            </ul>
         </div>
         <div class="download">
             <a href="/doc/v2.3.2/rdoc.zip" id="download">Download</a> <img src="i/download.png" height="17" width="17">

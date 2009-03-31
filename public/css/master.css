@@ -188,38 +188,89 @@ h3 i
 }
 
 
-.actions .version
+.versions
 {
-    position: absolute;
-    left: 7px;
-    top: -1em;
+    margin-left: 265px;
+    margin-bottom: 2px;
     font-size: 0.76em;
-    z-index: 10;
 }
 
-.actions .version .selector
+.versions .presets
 {
-    color:#3875D7;
+    margin-bottom: 3px;
+}
+
+
+.versions .preset
+{
+    color: #3875D7;
     cursor: pointer;
-    padding-right: 10px;
-    background: url(../i/more_arrow.gif) right center;
-    background-repeat: no-repeat;
+    position: relative;
+    top: -0.14em;
+    border-bottom: 1px dotted;
+    margin: 0 0.2em;
 }
 
-.actions .version .list
+.versions .preset span
 {
-    background: white;
+    position: relative;
+    top: 0.14em;
+}
+
+.versions .preset_selected
+{
+    background: #3875D7;
+    cursor: text;
+    border-bottom: none;
+    color:#fff;
+    margin: 0;
+    padding: 0 0.2em;
+}
+
+.packages
+{
+    margin-left: -5px;
+    margin-bottom: 4px;
+    padding: 4px;
     border: 1px solid #ccc;
-    margin-left: -4px;
-    padding: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background:#E8E8E8;
+    width: 367px;
 }
 
-.actions .version .list li
+.packages p
 {
-    padding: 0.3em 0 0.3em 0;
-    color:#3875D7;
-    cursor: pointer;
+    margin: 0 0 0.7em 0;
 }
+
+.packages p input
+{
+    vertical-align: middle;
+}
+
+
+.packages h3
+{
+    font-size: 1em;
+    margin: 1.2em 0 0.5em 2px;
+}
+
+.packages .column
+{
+    float: left;
+    width: 49%;
+}
+
+
+
+.packages .note
+{
+    margin-top: -0.7em;
+    margin-left: 20px;
+}
+
 
 .mail
 {
@@ -272,6 +323,13 @@ h3 i
     font-size: 0.76em;
     margin-bottom: 20px;
     padding-top: 30px;
+}
+
+.clear
+{
+    overflow: hidden;
+    width: 0; height: 0;
+    clear: both;
 }
 
 
