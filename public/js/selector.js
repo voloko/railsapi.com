@@ -115,7 +115,7 @@ jQuery.versionSelector = function(element, versions, sizes) {
             id = guid++, select, input, option, versions = version.versions;
         p.innerHTML = 
             '<input type="checkbox" id="item_' + id + '" />'
-            + '<label for="item_' + id + '">' + version.name + '</label>';
+            + '<label for="item_' + id + '">' + version.name + '</label> ';
         if (versions.length > 1) {
             p.innerHTML += '<select id="item_select_' + id + '"></select>';
             select = p.getElementsByTagName('select')[0];
