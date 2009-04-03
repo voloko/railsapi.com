@@ -1,7 +1,6 @@
 require "rubygems"
 require "fileutils"
 require "pathname"
-gem "sdoc"
 require "sdoc"
 require "haml"
 
