@@ -5,7 +5,6 @@ require "rake"
 class SDocSite::Automation::Ruby
   def initialize automation
     @automation = automation
-    @tmp_path = @automation.temp_dir
   end
   
   def name
@@ -29,6 +28,7 @@ class SDocSite::Automation::Ruby
   end
   
   def build_doc version
+    @tmp_path = @automation.temp_dir
     doc_dir = @automation.temp_dir
     if version.minor == '8'
       `svn checkout http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7_99 #{@tmp_path}`
