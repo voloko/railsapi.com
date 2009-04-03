@@ -1,6 +1,5 @@
 require "fileutils"
 require "pathname"
-$:.unshift "/Users/volodakolesnikov/code/sdoc/lib"
 require "sdoc"
 require "rubygems"
 require "haml"

@@ -4,6 +4,7 @@ require "sdoc_site/builds"
 
 get '/doc/:build/*' do |build|
   begin
+    
     builds = SDocSite::Builds.new(File.join('public', 'doc'))
     merged_build = SDocSite::Builds::MergedBuild.from_str params[:build]
     available_build = builds.merged_build(merged_build)
@@ -14,8 +15,8 @@ get '/doc/:build/*' do |build|
     a = SDocSite::Automation.new File.expand_path(File.join('public', 'doc'))
     a.merge_builds merged_build
     a.generate_index
+    haml :building, :locals => {:build => params[:build]}
   rescue Exception => e
-    return e.to_s + e.backtrace.to_s
+    pass
   end
-  haml :building, :locals => {:build => params[:build]}
 end
