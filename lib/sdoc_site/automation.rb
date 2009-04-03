@@ -1,7 +1,8 @@
-require "rubygems"
 require "fileutils"
 require "pathname"
+$:.unshift "/Users/volodakolesnikov/code/sdoc/lib"
 require "sdoc"
+require "rubygems"
 require "haml"
 
 require "sdoc_site/builds"
@@ -81,7 +82,7 @@ class SDocSite::Automation
     else
       debug_msg "Can't find automation for #{name}"
     end
-    clean_up
+    # clean_up
   end
   
   # Merges given builds with sdoc-merge
@@ -107,7 +108,7 @@ class SDocSite::Automation
   
     prepare tmp
     
-    FileUtils.cp_r File.join(tmp, '.'), target, :remove_destination => true 
+    FileUtils.cp_r File.join(tmp, '.'), target, :remove_destination => true, :preserve => true 
     clean_up
   end
   
@@ -164,7 +165,7 @@ protected
     target = File.join(@public_dir, "#{auto.short_name}-v#{version.to_s}") 
     debug_msg " copying #{doc_dir} to #{target}"
     FileUtils.rm_rf target if File.exists? target
-    FileUtils.cp_r File.join(doc_dir, '.'), target 
+    FileUtils.cp_r File.join(doc_dir, '.'), target, :remove_destination => true, :preserve => true 
   end
   
   def version_script
