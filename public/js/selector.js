@@ -122,11 +122,11 @@ jQuery.versionSelector = function(element, versions, sizes) {
             for (var i=0, l = versions.length; i < l; i++) {
                 option = document.createElement('option');
                 option.value = versions[i];
-                option.innerHTML = 'v' + versions[i];
+                option.innerHTML = versions[i];
                 select.appendChild(option);
             };
         } else {
-            p.innerHTML += '<input type="hidden" value="' + versions[0] + '"> v' + versions[0];
+            p.innerHTML += '<input type="hidden" value="' + versions[0] + '"> ' + versions[0];
             select = p.getElementsByTagName('input')[1];
         }
         $(select).data('href', version.href);
@@ -152,7 +152,7 @@ jQuery.versionSelector = function(element, versions, sizes) {
         var parts = [], item, path;
         for (var i=0, l = items.length; i < l; i++) {
             item = items[i]
-            parts[parts.length] = item[0].replace(/[_-]/g, '') + '-v' + item[1].replace(/[_-]/g, '');
+            parts[parts.length] = item[0].replace(/[_-]/g, '') + '-' + item[1].replace(/[_-]/g, '');
         };
         path = parts.join('_');
         $('#download').attr('href', '/doc/' + path + '/rdoc.zip');

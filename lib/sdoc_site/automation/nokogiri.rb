@@ -13,6 +13,7 @@ protected
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
     options << '--title' << 'Nokogiri'
+    options << '--main' << 'README'
     
     file_list = Rake::FileList.new
     file_list.include('*.rdoc')

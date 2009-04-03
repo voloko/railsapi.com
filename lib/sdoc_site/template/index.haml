@@ -35,13 +35,13 @@
           beta :)
       %p.slogan
         Smart search,  beautifully packed
-      #versions.versions
-        .presets
+      #versions.versions<>
+        .presets<>
           %span.preset.preset_rails.preset_selected
-            %span<> Rails v2.3
+            %span<>= "Rails #{rails_version}"
           or
           %span.preset.preset_ruby
-            %span<> Rails v2.3 + Ruby 1.8
+            %span<>= "Rails #{rails_version} + Ruby #{ruby_version}"
           or
           %span.preset
             %span<> select some gems
@@ -53,11 +53,11 @@
           %br
           %a{ :href => "http://www.twitter.com/voloko" } Follow me on twitter
         .download
-          %a#download{ :href => "/doc/v2.3.2/rdoc.zip" } Download
+          %a#download{ :href => "/doc/rails-#{rails_version}/rdoc.zip" } Download
           %img{ :src => "i/download.png", :height => "17", :width => "17" }
-          %p#size Zip, 2.32 MB
+          %p#size= "Zip, #{rails_size}"
         .browse
-          %a#browse{ :href => "/doc/v2.3.2/" } Browse online
+          %a#browse{ :href => "/doc/rails-#{rails_version}/" } Browse online
         .note
           Tested with Safari 4, Firefox 3, Opera 9.5
           %br

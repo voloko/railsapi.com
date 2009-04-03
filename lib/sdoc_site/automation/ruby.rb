@@ -1,5 +1,6 @@
 require "sdoc_site/version"
 require "sdoc"
+require "rake"
 
 class SDocSite::Automation::Ruby
   def initialize automation
@@ -48,37 +49,55 @@ protected
     options = []
     options << "-o" << target
     options << '--line-numbers' 
-    options << '-x' << 'lib/rdoc'
-    options << '-x' << 'ext/win32ole'
-    options << '-x' << 'lib/rss'
-    options << '-x' << 'lib/runit'
-    options << '-x' << 'lib/irb'
-    options << '-x' << 'lib/rinda'
-    options << '-x' << 'lib/webrick'
-    options << './README'
-    options << './COPYING'
-    options << './NEWS'
-    options << './ChangeLog'
-    options << './LEGAL'
-    options << './LGPL'
-    options << './GPL'
-    options << '.'
+    options << '--main' << 'README'
+    file_list = Rake::FileList.new
+    file_list.include('README')
+    file_list.include('COPYING')
+    file_list.include('NEWS')
+    file_list.include('LEGAL')
+    file_list.include('LGPL')
+    file_list.include('GPL')
+    file_list.include('*.{c,rb}')
+    file_list.include('lib/**/*.{c,rb}')
+    file_list.include('ext/**/*.{c,rb}')
+    file_list.exclude('ext/win32ole')
+    file_list.exclude('ext/tk')
+    file_list.exclude('lib/drb')
+    file_list.exclude('lib/irb')
+    file_list.exclude('lib/rake')
+    file_list.exclude('lib/rdoc')
+    file_list.exclude('lib/rss')
+    file_list.exclude('lib/rinda')
+    file_list.exclude('lib/webric')
+    options += file_list.to_a
     RDoc::RDoc.new.document(options)
   end
   
   def run_sdoc_1_9 target
     options = []
     options << "-o" << target
-    options << '-x' << 'ext/win32ole'
     options << '--line-numbers' 
-    options << './README'
-    options << './COPYING'
-    options << './NEWS'
-    options << './ChangeLog'
-    options << './LEGAL'
-    options << './LGPL'
-    options << './GPL'
-    options += %w(*.c *.rb ext lib/*.rb lib/*.c lib/cgi lib/date lib/net lib/racc lib/rbconfig lib/rexml lib/rubygems lib/shell lib/test lib/uri lib/xmlrpc/ lib/yaml)
+    options << '--main' << 'README'
+    file_list = Rake::FileList.new
+    file_list.include('README')
+    file_list.include('COPYING')
+    file_list.include('NEWS')
+    file_list.include('LEGAL')
+    file_list.include('LGPL')
+    file_list.include('GPL')
+    file_list.include('*.{c,rb}')
+    file_list.include('lib/**/*.{c,rb}')
+    file_list.include('ext/**/*.{c,rb}')
+    file_list.exclude('ext/win32ole')
+    file_list.exclude('ext/tk')
+    file_list.exclude('lib/drb')
+    file_list.exclude('lib/irb')
+    file_list.exclude('lib/rake')
+    file_list.exclude('lib/rdoc')
+    file_list.exclude('lib/rss')
+    file_list.exclude('lib/rinda')
+    file_list.exclude('lib/webric')
+    options += file_list.to_a
     RDoc::RDoc.new.document(options)
   end
 

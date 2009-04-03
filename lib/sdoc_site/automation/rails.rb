@@ -13,6 +13,7 @@ protected
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
     options << "--title" << "Ruby on Rails"
+    options << '--main' << 'README'
     
     file_list = Rake::FileList.new
     extract_rdoc_includes.each {|i| file_list.include(i) }

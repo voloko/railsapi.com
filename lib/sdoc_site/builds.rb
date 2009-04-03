@@ -11,19 +11,26 @@ class SDocSite::Builds
     include Comparable
     attr_accessor :name
     attr_accessor :versions
+    attr_accessor :original
     
     def initialize(name, versions = [])
       @name = name
       @versions = versions
     end
     
+    def version
+      @versions.max
+    end
+    
     def self.from_str str
       (tmp, name, version) = *str.match(SIMPLE_BUILD_REGEXP)
-      self.new name, [SDocSite::Version.new(version)]
+      build = self.new name, [SDocSite::Version.new(version)]
+      build.original = str
+      build
     end
     
     def to_s
-      "#{name}-#{versions.max.to_tag}"
+      @original || "#{name}-#{versions.max.to_tag}"
     end
     
     def <=>(other)
@@ -36,10 +43,11 @@ class SDocSite::Builds
   end
   
   class MergedBuild
-    attr_accessor :builds
+    attr_accessor :builds, :original
     
     def initialize
       @builds = []
+      @original = nil
     end
     
     def ==(other)
@@ -52,8 +60,14 @@ class SDocSite::Builds
       parts.each do |part|
         merged.builds << Build.from_str(part)
       end
+      merged.original = str
       merged
     end
+    
+    def to_s
+      @original || @builds.join('_')
+    end
+
   end
   
   def initialize(root)
@@ -74,6 +88,10 @@ class SDocSite::Builds
     builds.values
   end
   
+  def simple_build build
+    simple_builds.find { |b| b == build }
+  end
+  
   def merged_builds
     raw_builds = select_dirs MERGED_BUILD_REGEXP
     result = []
@@ -81,6 +99,10 @@ class SDocSite::Builds
       result << MergedBuild.from_str(raw)
     end
     result
+  end
+  
+  def merged_build build
+    merged_builds.find { |b| b == build }
   end
   
 protected

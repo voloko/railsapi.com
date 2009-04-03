@@ -1,4 +1,4 @@
-$KCODE = 'UTF-8'
+$KCODE = 'UTF-8' unless RUBY_VERSION >= '1.9'
 
 $:.unshift "#{File.dirname(__FILE__)}/lib"
 require 'rubygems'
@@ -19,7 +19,27 @@ desc "Generate sdoc for all new versions"
 task :build_new_docs do
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   a.build_new_docs
-  a.clean_up
+  a.generate_index
+end
+
+desc "Rebuild sdoc for ENV[name], ENV[version]"
+task :rebuild_version do
+  a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
+  a.rebuild_version ENV["name"], ENV["version"]
+  a.generate_index
+end
+
+desc "Generate index.html"
+task :generate_index do
+  a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
+  a.generate_index
+end
+
+desc "Merges ENV[builds]"
+task :merge_builds do
+  a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
+  a.merge_builds SDocSite::Builds::MergedBuild.from_str(ENV["builds"])
+  a.generate_index
 end
 
 

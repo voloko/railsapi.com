@@ -190,7 +190,7 @@ h3 i
 
 .versions
 {
-    margin-left: 270px;
+    margin-left: 266px;
     margin-bottom: 2px;
     font-size: 0.76em;
 }
@@ -198,6 +198,7 @@ h3 i
 .versions .presets
 {
     margin-bottom: 3px;
+    margin-left: 3px;
 }
 
 
