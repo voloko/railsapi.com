@@ -13,9 +13,9 @@ protected
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
     options << '--title' << 'RSpec'
-    options << '--main' << 'README'
     
     file_list = Rake::FileList.new
+    file_list.include('README')
     file_list.include('*.rdoc')
     file_list.include('lib/**/*.rb')
     

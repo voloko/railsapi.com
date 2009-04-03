@@ -18,7 +18,7 @@ class SDocSite::Version
   end
 
   def to_s
-    "#{major}.#{minor}" + (tiny ? ".#{tiny}#{other}" : '');
+    "#{major}.#{minor}" + (tiny.empty? ? '' : ".#{tiny}#{other}");
   end
   
   def to_tag

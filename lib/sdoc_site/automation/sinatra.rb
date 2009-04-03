@@ -15,7 +15,7 @@ protected
     options << '--title' << 'Hpricot'
     options << '--main' << 'README.rdoc'
     
-    file_list = Rake::FileList['lib/**/*.rb','README.rdoc']
+    file_list = Rake::FileList['README.rdoc', 'lib/**/*.rb']
     
     options += file_list
     RDoc::RDoc.new.document(options)

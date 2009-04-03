@@ -8,6 +8,14 @@ class SDocSite::Automation::Github
     @tmp_path = @automation.temp_dir
   end
   
+  def name
+    short_name[0,1].upcase + short_name[1..-1]
+  end
+  
+  def description
+    ''
+  end
+  
   def short_name
     File.basename @url, '.git'
   end
