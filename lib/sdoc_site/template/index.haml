@@ -40,10 +40,10 @@
           %span.preset.preset_rails.preset_selected
             %span<>= "Rails #{rails_version}"
           or
-          %span.preset.preset_ruby{:style => "display: none"}
+          %span.preset.preset_ruby
             %span<>= "Rails #{rails_version} + Ruby #{ruby_version}"
           or
-          %span.preset
+          %span.preset{:style => "display: none"}
             %span<> select some gems
       .actions
         .links
