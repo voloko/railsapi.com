@@ -201,13 +201,14 @@ protected
 
   def version_hash
     result = []
-    @builds.simple_builds.each do |build|
-      auto = @automations.find {|a| a.short_name == build.name }
+    @automations.each do |auto|
+      build = @builds.simple_build_by_name(auto.short_name)
+      next unless build
       item = {
-        "name" => auto ? auto.name : build.name,
+        "name" => auto.name,
         "href" => build.name,
         "versions" => build.versions.reverse.map {|v| v.to_tag},
-        "description" => auto ? auto.description : ''
+        "description" => auto.description
       }
       result << item
     end

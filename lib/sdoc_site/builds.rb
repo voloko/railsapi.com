@@ -92,6 +92,10 @@ class SDocSite::Builds
     simple_builds.find { |b| b == build }
   end
   
+  def simple_build_by_name name
+    simple_builds.find { |b| b.name == name }
+  end
+  
   def merged_builds
     raw_builds = select_dirs MERGED_BUILD_REGEXP
     result = []
