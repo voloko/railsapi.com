@@ -107,15 +107,22 @@ class SDocSite::Automation
   
     prepare tmp
     
-    FileUtils.cp_r File.join(tmp, '.'), target, :remove_destination => true, :preserve => true 
-    clean_up
+    FileUtils.rm_rf target if File.exists? target
+    FileUtils.cp_r File.join(tmp, '.'), target, :preserve => true 
+    #clean_up
   end
   
   # Creates ziped packaged for doc in +doc_dir+
   def prepare doc_dir
     debug_msg " preparing for web (gzip)"
-    zip_file = File.join doc_dir, 'rdoc.zip'
-    `zip -r #{zip_file} #{doc_dir}`
+    cwd = Dir.pwd
+    begin
+      Dir.chdir doc_dir
+      zip_file = 'rdoc.zip'
+      `zip -r #{zip_file} .`
+    ensure
+      Dir.chdir cwd
+    end
   end
   
   # Regenerates index.html
@@ -168,7 +175,7 @@ protected
     target = File.join(@public_dir, "#{auto.short_name}-v#{version.to_s}") 
     debug_msg " copying #{doc_dir} to #{target}"
     FileUtils.rm_rf target if File.exists? target
-    FileUtils.cp_r File.join(doc_dir, '.'), target, :remove_destination => true, :preserve => true 
+    FileUtils.cp_r File.join(doc_dir, '.'), target, :preserve => true 
   end
   
   def version_script

@@ -42,5 +42,14 @@ task :merge_builds do
   a.generate_index
 end
 
+desc "Remerge all merged builds"
+task :remerge_all_builds do
+  builds = SDocSite::Builds.new File.join('.', 'public', 'doc')
+  a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
+  builds.merged_builds.each do |build|
+    a.merge_builds build
+  end
+  a.generate_index
+end
 
 # `~/code/sdoc/bin/sdoc -N -o rdoc -x irb/output-method.rb -x ext/win32ole/tests/ -x ext/win32ole/sample/ README *.c *.h lib/ ext/`
