@@ -131,7 +131,10 @@ class SDocSite::Automation
         :rails_size => sizes_hash[@builds_map['rails'].to_s]
       })
     end
-    File.chmod 0666, @outfile
+    begin
+      File.chmod 0666, @outfile
+    rescue
+    end
   end
   
   # Get automation by short +name+
