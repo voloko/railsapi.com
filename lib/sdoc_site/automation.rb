@@ -124,13 +124,14 @@ class SDocSite::Automation
     @outfile = File.join @public_dir, '..', 'index.html'
     engine = ::Haml::Engine.new @template.read
     File.open(@outfile, 'w', 0666) do |f|
-      f.print engine.render(nil, {
+      f.write engine.render(nil, {
         :version_script => version_script,
         :ruby_version => @builds_map['ruby'].version.to_tag,
         :rails_version => @builds_map['rails'].version.to_tag,
         :rails_size => sizes_hash[@builds_map['rails'].to_s]
       })
     end
+    File.chmod 0666, @outfile
   end
   
   # Get automation by short +name+
