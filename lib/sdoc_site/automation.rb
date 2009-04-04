@@ -123,7 +123,7 @@ class SDocSite::Automation
     @template = Pathname.new(File.dirname(__FILE__)) + 'template' + 'index.haml'
     @outfile = File.join @public_dir, '..', 'index.html'
     engine = ::Haml::Engine.new @template.read
-    File.open(@outfile, 'w') do |f|
+    File.open(@outfile, 'w', 0644) do |f|
       f.print engine.render(nil, {
         :version_script => version_script,
         :ruby_version => @builds_map['ruby'].version.to_tag,
