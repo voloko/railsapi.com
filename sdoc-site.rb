@@ -2,7 +2,7 @@ $:.unshift ::File.expand_path(::File.join(::File.dirname(__FILE__), 'lib/'))
 require "sdoc_site"
 require "sdoc_site/builds"
 
-get '/doc/:build/*' do |build|
+get '/doc/:build/*' do
   begin
     
     builds = SDocSite::Builds.new(File.join('public', 'doc'))
