@@ -9,7 +9,7 @@ get '/doc/:build/*' do
     merged_build = SDocSite::Builds::MergedBuild.from_str params[:build]
     available_build = builds.merged_build(merged_build)
     if available_build
-      redirect "/doc/#{available_build}"
+      redirect "/doc/#{available_build}/"
     end
     require "sdoc_site/automation"
     a = SDocSite::Automation.new File.expand_path(File.join('public', 'doc'))
