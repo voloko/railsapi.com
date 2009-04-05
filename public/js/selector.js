@@ -12,6 +12,7 @@ jQuery.versionSelector = function(element, versions, sizes) {
     this.init = function() {
         this.selects = [];
         this.inputs = [];
+        this.unknownSize = false;
         
         this.gemVersions = [];
         for (var i=0, l = versions.length; i < l; i++) {
@@ -30,6 +31,11 @@ jQuery.versionSelector = function(element, versions, sizes) {
     
     this.bindEvents = function() {
         $('.preset', element).click(this.presetClick);
+        $('#download, #browse').click(this.downloadClick);
+    }
+    
+    this.downloadClick = function() {
+        if (_this.unknownSize) $('.build-message').show()
     }
     
     this.presetClick = function() {
@@ -155,9 +161,15 @@ jQuery.versionSelector = function(element, versions, sizes) {
             parts[parts.length] = item[0].replace(/[_-]/g, '') + '-' + item[1].replace(/[_-]/g, '');
         };
         path = parts.join('_');
-        $('#download').attr('href', '/doc/' + path + '/rdoc.zip');
-        $('#browse').attr('href', '/doc/' + path + '/');
+        if (parts.length) {
+            $('#download').attr('href', '/doc/' + path + '/rdoc.zip');
+            $('#browse').attr('href', '/doc/' + path + '/');
+        } else {
+            $('#download').attr('href', '#');
+            $('#browse').attr('href', '#');
+        }
         $('#size').html('Zip, ' + (this.sizes[path] || 'unknown size'));
+        this.unknownSize = !this.sizes[path];
     }
     
     this.element = element;

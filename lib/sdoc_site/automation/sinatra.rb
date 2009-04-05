@@ -13,6 +13,7 @@ protected
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
     options << '--title' << 'Sinatra'
+    options << '-T' << 'direct'
     options << '--main' << 'README.rdoc'
     
     file_list = Rake::FileList['README.rdoc', 'lib/**/*.rb']

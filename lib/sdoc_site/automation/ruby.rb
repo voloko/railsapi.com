@@ -50,6 +50,8 @@ protected
     options << "-o" << target
     options << '--line-numbers' 
     options << '--main' << 'README'
+    options << '--title' << 'Ruby'
+    options << '-T' << 'direct'
     file_list = Rake::FileList.new
     file_list.include('README')
     file_list.include('COPYING')
@@ -77,6 +79,8 @@ protected
     options = []
     options << "-o" << target
     options << '--line-numbers' 
+    options << '-T' << 'direct'
+    options << '--title' << 'Ruby'
     options << '--main' << 'README'
     file_list = Rake::FileList.new
     file_list.include('README')

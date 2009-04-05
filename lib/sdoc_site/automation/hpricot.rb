@@ -13,6 +13,7 @@ protected
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
     options << '--title' << 'Hpricot'
+    options << '-T' << 'direct'
     options << '--main' << 'README'
     
     file_list = Rake::FileList.new
