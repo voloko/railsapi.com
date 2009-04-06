@@ -16,11 +16,15 @@ protected
     options << '--threads' << '1' # rdoc somehow fails to join thread after build
     options << '--title' << 'RSpec'
     options << '-T' << 'direct'
-    options << '--main' << 'README'
+    if File.exists? 'README.rdoc'
+      options << '--main' << 'README.rdoc' 
+    else
+      options << '--main' << 'README' 
+    end
     
     file_list = Rake::FileList.new
-    file_list.include('README')
-    file_list.include('KNOWN-ISSUES')
+    file_list.include('*.txt')
+    file_list.include('*.rdoc')
     file_list.include('SPEC')
     file_list.include('RDOX')
     file_list.include('lib/**/*.rb')
