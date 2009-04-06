@@ -14,7 +14,7 @@ protected
     options << '--charset' << 'utf-8'
     options << '--title' << 'Haml/Sass'
     options << '-T' << 'direct'
-    options << '--main' << 'README'
+    options << '--main' << 'README.rdoc'
     
     file_list = Rake::FileList.new
     file_list.include('README.rdoc')
