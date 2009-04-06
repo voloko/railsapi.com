@@ -166,12 +166,18 @@ h3 i
 {
     position: absolute;
     left: 420px;
-    top: 22px;
-    font-size: 0.76em;
+    top: 10px;
     color:#666;
     white-space: nowrap;
     line-height: 1.4;
 }
+
+.actions .note p
+{
+    margin-bottom: 0.3em;
+    font-size: 0.76em;
+}
+
 
 .actions .links
 {
@@ -392,6 +398,6 @@ h3 i
     margin-left: 0;
     margin-top: 0;
     font-size: 1.12em;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.76emem;
     margin-top: 0.2em;
 }
