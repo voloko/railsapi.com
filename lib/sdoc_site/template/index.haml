@@ -28,11 +28,6 @@
     %link{ :href => "css/reset.css", :title => "no title", :rel => "stylesheet", :media => "screen", :type => "text/css", :charset => "utf-8" }
     %link{ :href => "css/master.css", :title => "no title", :rel => "stylesheet", :media => "screen", :type => "text/css", :charset => "utf-8" }
   %body
-    .build-message{ :style => "display:none" }
-      .bg
-      .content
-        %h1 Your package is being merged
-        %p Please be patient. It usualy does not take longer than 30 seconds.
     .body
       %h1 
         Rails <b>S</b>ea<b>rch</b>able API Doc
@@ -126,6 +121,11 @@
         %span.mail
           %a{ :href => "mailto:voloko@gmail.com?subject=Sdoc feedback" }
             Send feedback
+    .build-message{ :style => "display:none" }
+      .bg
+      .content
+        %h1 Your package is being merged
+        %p Please be patient. It usualy does not take longer than 30 seconds.
     %script{ :type => "text/javascript" }
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
