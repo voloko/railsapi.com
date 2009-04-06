@@ -164,12 +164,13 @@ jQuery.versionSelector = function(element, versions, sizes) {
         if (parts.length) {
             $('#download').attr('href', '/doc/' + path + '/rdoc.zip');
             $('#browse').attr('href', '/doc/' + path + '/');
+            this.unknownSize = !this.sizes[path];
         } else {
             $('#download').attr('href', '#');
             $('#browse').attr('href', '#');
+            this.unknownSize = false;
         }
         $('#size').html('Zip, ' + (this.sizes[path] || 'unknown size'));
-        this.unknownSize = !this.sizes[path];
     }
     
     this.element = element;
