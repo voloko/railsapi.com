@@ -377,7 +377,8 @@ h3 i
     margin: 1em;
     padding: 1em;
     height: 6em;
-    background: white;
+    background: white url('/i/ajax-loader.gif') 50% 5.5em;
+    background-repeat: no-repeat;
 }
 
 .build-message .content p
@@ -391,6 +392,6 @@ h3 i
     margin-left: 0;
     margin-top: 0;
     font-size: 1.12em;
-    margin-bottom: 1em;
-    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    margin-top: 0.2em;
 }
