@@ -10,8 +10,10 @@ get %r{/doc/([^/]+)/([^/]*)} do
     available_build = builds.merged_build(merged_build)
     
     public_dir = File.join('public', 'doc')
+    lock_dir = 'lock'
     target = File.join public_dir, merged_build.to_s
-    if File.exists?(target)
+    lock = File.join lock_dir, merged_build.to_s
+    if File.exists?(lock)
       pass if File.exists?(File.join(target, 'rdoc.zip'))
       return haml(:building, :locals => {:build => params["captures"][0]})
     end
@@ -21,7 +23,7 @@ get %r{/doc/([^/]+)/([^/]*)} do
     end
     
     require "sdoc_site/automation"
-    Dir.mkdir target
+    Dir.mkdir lock
     a = SDocSite::Automation.new File.expand_path(public_dir)
     a.merge_builds merged_build
     a.generate_index
