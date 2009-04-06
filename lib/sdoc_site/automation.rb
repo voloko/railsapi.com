@@ -22,9 +22,11 @@ class SDocSite::Automation
     require "sdoc_site/automation/rack"
     require "sdoc_site/automation/rspec"
     require "sdoc_site/automation/sinatra"
+    require "sdoc_site/automation/authlogic"
     @automations = []
     @automations << SDocSite::Automation::Ruby.new(self)
     @automations << SDocSite::Automation::Rails.new(self)
+    @automations << SDocSite::Automation::Authlogic.new(self)
     @automations << SDocSite::Automation::Haml.new(self)
     @automations << SDocSite::Automation::Hpricot.new(self)
     @automations << SDocSite::Automation::Nokogiri.new(self)
