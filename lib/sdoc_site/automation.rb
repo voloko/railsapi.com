@@ -171,6 +171,7 @@ class SDocSite::Automation
   
 protected
   def build_version auto, version
+    debug_msg "Build doc for #{auto.name} #{version.to_tag}"
     debug_msg " downloading source and building doc"
     doc_dir = auto.build_doc version
   
