@@ -85,7 +85,7 @@ class SDocSite::Automation
     else
       debug_msg "Can't find automation for #{name}"
     end
-    # clean_up
+    clean_up
   end
   
   # Merges given builds with sdoc-merge
@@ -114,7 +114,7 @@ class SDocSite::Automation
     
     FileUtils.rm_rf target if File.exists? target
     FileUtils.cp_r File.join(tmp, '.'), target, :preserve => true 
-    #clean_up
+    clean_up
   end
   
   # Creates ziped packaged for doc in +doc_dir+
