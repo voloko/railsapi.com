@@ -90,6 +90,7 @@ class SDocSite::Automation
   
   # Merges given builds with sdoc-merge
   def merge_builds merged_build
+    debug_msg "Merging #{merged_build}"
     require "sdoc/merge"
     tmp = temp_dir
     target = File.join @public_dir, merged_build.to_s

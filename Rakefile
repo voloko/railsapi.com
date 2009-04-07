@@ -47,8 +47,13 @@ task :remerge_all_builds do
   builds = SDocSite::Builds.new File.join('.', 'public', 'doc')
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   builds.merged_builds.each do |build|
-    a.merge_builds build
-    a.generate_index
+    begin
+      a.merge_builds build
+      a.generate_index
+    rescue Exception => e
+      puts e.to_s
+      puts e.backtrace.to_s
+    end
   end
 end
 
@@ -58,8 +63,13 @@ task :rebuild_all_docs do
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   builds.simple_builds.each do |build|
     build.versions.each do |version|
-      a.rebuild_version build.name, version.to_s
-      a.generate_index
+      begin
+        a.rebuild_version build.name, version.to_s
+        a.generate_index
+      rescue Exception => e
+        puts e.to_s
+        puts e.backtrace.to_s
+      end
     end
   end
 end
