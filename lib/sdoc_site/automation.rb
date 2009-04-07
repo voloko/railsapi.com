@@ -79,7 +79,9 @@ class SDocSite::Automation
   def rebuild_version name, version
     auto = automation_by_name(name)
     if auto
-      build_version auto, SDocSite::Version.new(version)
+      version = SDocSite::Version.new(version)
+      version = auto.available_versions.find {|v| v == version }
+      build_version auto, version if version
     else
       debug_msg "Can't find automation for #{name}"
     end

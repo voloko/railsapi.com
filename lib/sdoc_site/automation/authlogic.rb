@@ -6,19 +6,6 @@ class SDocSite::Automation::Authlogic < SDocSite::Automation::Github
     super automation, 'git://github.com/binarylogic/authlogic.git'
   end
   
-  def available_versions
-    [SDocSite::Version.new('2.0.6')]
-  end
-  
-  def build_doc version
-    doc_dir = @automation.temp_dir
-    `git clone #{@url} #{@tmp_path}`
-    in_tmp do
-      run_sdoc doc_dir
-    end
-    doc_dir
-  end
-  
 protected
   def run_sdoc target
     options = []
