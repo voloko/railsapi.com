@@ -89,11 +89,49 @@ class SDocSite::Automation
   end
   
   # Merges given builds with sdoc-merge
+  # Shallow merge, do not actualy copy file or classes
+  # into target
   def merge_builds merged_build
     debug_msg "Merging #{merged_build}"
     require "sdoc/merge"
+    
     tmp = temp_dir
     target = File.join @public_dir, merged_build.to_s
+    
+    title = merged_build.builds.map do |build| 
+      automation_by_name(build.name).name + " v#{build.version}"
+    end.join(', ')
+    names = merged_build.builds.map do |build| 
+      automation_by_name(build.name).short_name
+    end.join(',')
+    urls = merged_build.builds.map do |build|
+      '../' + @builds.simple_build(build).to_s
+    end.join(' ')
+    
+    options = []
+    options << "-o" << tmp
+    options << '--title' << title
+    options << '--names' << names
+    options << '--urls'  << urls
+    merged_build.builds.each do |build|
+      options << File.join(@public_dir, build.to_s)
+    end
+    SDoc::Merge.new.merge(options)
+  
+    FileUtils.rm_rf target if File.exists? target
+    FileUtils.cp_r File.join(tmp, '.'), target, :preserve => true 
+    
+    zip_tmp = merge_zip merged_build
+    FileUtils.cp File.join(zip_tmp, 'rdoc.zip'), target, :preserve => true
+    clean_up
+  end
+  
+  # Merges given builds with sdoc-merge and build rdoc.zip
+  # Deep merge
+  def merge_zip merged_build
+    debug_msg "Merging zip for #{merged_build}"
+    
+    tmp = temp_dir
     
     title = merged_build.builds.map do |build| 
       automation_by_name(build.name).name + " v#{build.version}"
@@ -112,9 +150,7 @@ class SDocSite::Automation
   
     prepare tmp
     
-    FileUtils.rm_rf target if File.exists? target
-    FileUtils.cp_r File.join(tmp, '.'), target, :preserve => true 
-    clean_up
+    tmp
   end
   
   # Creates ziped packaged for doc in +doc_dir+
