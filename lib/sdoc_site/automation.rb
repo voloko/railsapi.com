@@ -23,6 +23,7 @@ class SDocSite::Automation
     require "sdoc_site/automation/rspec"
     require "sdoc_site/automation/sinatra"
     require "sdoc_site/automation/authlogic"
+    require "sdoc_site/automation/rspecrails"
     @automations = []
     @automations << SDocSite::Automation::Ruby.new(self)
     @automations << SDocSite::Automation::Rails.new(self)
@@ -33,6 +34,7 @@ class SDocSite::Automation
     @automations << SDocSite::Automation::Rack.new(self)
     @automations << SDocSite::Automation::RSpec.new(self)
     @automations << SDocSite::Automation::Sinatra.new(self)
+    @automations << SDocSite::Automation::RSpecRails.new(self)
     
     @builds = SDocSite::Builds.new @public_dir
     @builds_map = {}

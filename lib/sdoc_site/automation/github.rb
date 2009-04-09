@@ -17,7 +17,7 @@ class SDocSite::Automation::Github
   end
   
   def short_name
-    File.basename @url, '.git'
+    File.basename(@url, '.git').gsub(/[^\w\d]/, '')
   end
   
   def available_versions
@@ -41,14 +41,22 @@ class SDocSite::Automation::Github
   
 protected
   def run_sdoc target
-    in_tmp do
-      options = []
-      options << "-o" << target
-      options << '--line-numbers' 
-      options << './README' if File.exists? 'README'
-      options << 'lib/'
-      RDoc::RDoc.new.document(options)
-    end
+    options = []
+    options << "-o" << target
+    options << '--line-numbers' 
+    options << '--charset' << 'utf-8'
+    options << '--title' << name
+    options << '-T' << 'direct'
+    options << '--main' << 'README.rdoc' if File.exist? 'README.rdoc'
+    options << '--main' << 'README' if File.exist? 'README'
+    
+    file_list = Rake::FileList.new
+    file_list.include('README')
+    file_list.include('*.rdoc')
+    file_list.include('lib/**/*.rb')
+    
+    options += file_list
+    RDoc::RDoc.new.document(options)
   end
 
   def in_tmp &block
