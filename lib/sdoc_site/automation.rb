@@ -107,7 +107,7 @@ class SDocSite::Automation
       automation_by_name(build.name).short_name
     end.join(',')
     urls = merged_build.builds.map do |build|
-      '../' + @builds.simple_build(build).to_s
+      '../' + build.to_s
     end.join(' ')
     
     options = []
