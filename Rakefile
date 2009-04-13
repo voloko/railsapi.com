@@ -44,7 +44,7 @@ end
 
 desc "Remerge all merged builds"
 task :remerge_all_builds do
-  builds = SDocSite::Builds.new File.join('.', 'public', 'doc')
+  builds = SDocSite::Builds::List.new File.join('.', 'public', 'doc')
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   builds.merged_builds.each do |build|
     begin
@@ -59,7 +59,7 @@ end
 
 desc "Remerge all merged builds"
 task :rebuild_all_docs do
-  builds = SDocSite::Builds.new File.join('.', 'public', 'doc')
+  builds = SDocSite::Builds::List.new File.join('.', 'public', 'doc')
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   builds.simple_builds.each do |build|
     build.versions.each do |version|

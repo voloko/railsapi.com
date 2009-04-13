@@ -7,6 +7,8 @@ require "haml"
 require "sdoc_site/builds"
 
 class SDocSite::Automation
+  include SDocSite
+  
   def initialize public_dir, options = {}
     @public_dir = public_dir
     @options = options
@@ -14,29 +16,9 @@ class SDocSite::Automation
     name = 'sdoc_' + rand.to_s.gsub(/\D/, '')
     @temp_root = File.join('/tmp', 'sdoc')
     
-    require "sdoc_site/automation/ruby"
-    require "sdoc_site/automation/rails"
-    require "sdoc_site/automation/haml"
-    require "sdoc_site/automation/hpricot"
-    require "sdoc_site/automation/nokogiri"
-    require "sdoc_site/automation/rack"
-    require "sdoc_site/automation/rspec"
-    require "sdoc_site/automation/sinatra"
-    require "sdoc_site/automation/authlogic"
-    require "sdoc_site/automation/rspecrails"
-    @automations = []
-    @automations << SDocSite::Automation::Ruby.new(self)
-    @automations << SDocSite::Automation::Rails.new(self)
-    @automations << SDocSite::Automation::Authlogic.new(self)
-    @automations << SDocSite::Automation::Haml.new(self)
-    @automations << SDocSite::Automation::Hpricot.new(self)
-    @automations << SDocSite::Automation::Nokogiri.new(self)
-    @automations << SDocSite::Automation::Rack.new(self)
-    @automations << SDocSite::Automation::RSpec.new(self)
-    @automations << SDocSite::Automation::Sinatra.new(self)
-    @automations << SDocSite::Automation::RSpecRails.new(self)
+    load_automations
     
-    @builds = SDocSite::Builds.new @public_dir
+    @builds = Builds::List.new @public_dir
     @builds_map = {}
     @builds.simple_builds.each{ |build| @builds_map[build.name] = build }
   end
@@ -267,5 +249,29 @@ protected
       result << item
     end
     result
+  end
+  
+  def load_automations
+    require "sdoc_site/automation/ruby"
+    require "sdoc_site/automation/rails"
+    require "sdoc_site/automation/haml"
+    require "sdoc_site/automation/hpricot"
+    require "sdoc_site/automation/nokogiri"
+    require "sdoc_site/automation/rack"
+    require "sdoc_site/automation/rspec"
+    require "sdoc_site/automation/sinatra"
+    require "sdoc_site/automation/authlogic"
+    require "sdoc_site/automation/rspecrails"
+    @automations = []
+    @automations << Automation::Ruby.new(self)
+    @automations << Automation::Rails.new(self)
+    @automations << Automation::Authlogic.new(self)
+    @automations << Automation::Haml.new(self)
+    @automations << Automation::Hpricot.new(self)
+    @automations << Automation::Nokogiri.new(self)
+    @automations << Automation::Rack.new(self)
+    @automations << Automation::RSpec.new(self)
+    @automations << Automation::Sinatra.new(self)
+    @automations << Automation::RSpecRails.new(self)
   end
 end
