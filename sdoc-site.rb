@@ -29,6 +29,11 @@ get %r{/doc/([^/]+)/([^/]*)} do
   pass
 end
 
+get '/*' do
+  pass if params['splat'][0][0..3] == 'doc/'
+  redirect "/doc/#{params['splat'][0]}"
+end
+
 def try_redirecting_to_closest_minor list, path, remainder
   if path.match(SDocSite::Builds::SIMPLE_BUILD_REGEXP)
     searched_build = SDocSite::Builds::Build.from_str(path)
