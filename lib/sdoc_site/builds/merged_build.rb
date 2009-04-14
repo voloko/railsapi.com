@@ -25,6 +25,10 @@ class SDocSite::Builds::MergedBuild
     @original || @builds.sort.join('_')
   end
   
+  def include? build
+    @builds.any?{ |b| b == build }
+  end
+  
   def same_minor? merged
     return false if builds.size != merged.builds.size
     sorted = merged.builds.sort

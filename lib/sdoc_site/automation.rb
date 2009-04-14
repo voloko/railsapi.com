@@ -3,7 +3,7 @@ require "pathname"
 require "sdoc"
 require "rubygems"
 require "haml"
-
+require 'tmpdir'
 require "sdoc_site/builds"
 
 class SDocSite::Automation
@@ -14,7 +14,7 @@ class SDocSite::Automation
     @options = options
     
     name = 'sdoc_' + rand.to_s.gsub(/\D/, '')
-    @temp_root = File.join('/tmp', 'sdoc')
+    @temp_root = File.join(Dir.tmpdir, name)
     
     load_automations
     
@@ -28,7 +28,6 @@ class SDocSite::Automation
   # Builds doc if new ones are available.
   def build_new_docs
     FileUtils.mkdir_p @temp_root
-    
     @automations.each do |auto|
       
       debug_msg "Working with #{auto.short_name}"
@@ -58,9 +57,35 @@ class SDocSite::Automation
     clean_up
   end
   
+  # Leaves only one build for each minor version
+  def cleanup_oldies
+    debug_msg "Removing old builds"
+    to_remove = []
+    @builds.simple_builds.each do |build|
+      current = nil
+      build.each_versioned_build do |versioned|
+        to_remove << current if current && current.same_minor?(versioned)
+        current = versioned
+      end
+    end
+    to_remove.each do |build|
+      debug_msg " - #{build}"
+      FileUtils.rm_rf File.join(@public_dir, build.to_s)
+    end
+    @builds.merged_builds.each do |merged|
+      to_remove.each do |build|
+        if merged.include? build
+          debug_msg " - #{merged}"
+          FileUtils.rm_rf File.join(@public_dir, merged.to_s) 
+        end
+      end
+    end
+    
+  end
   
   # Rebuild documentation with automation +name+ for +version+
   def rebuild_version name, version
+    FileUtils.mkdir_p @temp_root
     auto = automation_by_name(name)
     if auto
       version = SDocSite::Version.new(version)
@@ -76,6 +101,7 @@ class SDocSite::Automation
   # Shallow merge, do not actualy copy file or classes
   # into target
   def merge_builds merged_build
+    FileUtils.mkdir_p @temp_root
     debug_msg "Merging #{merged_build}"
     require "sdoc/merge"
     

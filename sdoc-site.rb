@@ -2,6 +2,10 @@ require 'sinatra'
 require "sdoc_site"
 require "sdoc_site/builds"
 
+get '/doc/:something' do
+  redirect "/doc/#{params[:something]}/"
+end
+
 get %r{/doc/([^/]+)/([^/]*)} do
   path = params["captures"][0]
   remainder = params["captures"][1]
@@ -98,6 +102,6 @@ class SDocSite::Locks
   end
   
   def lock name
-    File.mkdir File.join(@root, name)
+    Dir.mkdir File.join(@root, name)
   end
 end

@@ -1,0 +1,51 @@
+config.ru:21: warning: Sinatra.application is deprecated; use Sinatra::Application instead.
+NoMethodError - undefined method `mkdir' for File:Class:
+ sdoc-site.rb:105:in `lock'
+ sdoc-site.rb:69:in `try_redirecting_to_closest_minor_or_merging'
+ sdoc-site.rb:26:in `GET (?-mix:\/doc\/([^\/]+)\/([^\/]*))'127.0.0.1 - - [14/Apr/2009 14:16:23] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 500 30 0.0018
+127.0.0.1 - - [14/Apr/2009 14:16:23] "GET /favicon.ico " 404 18 0.0008
+OptionParser::InvalidOption - invalid option: --urls:
+ /opt/local/lib/ruby/1.8/optparse.rb:1445:in `complete'
+ /opt/local/lib/ruby/1.8/optparse.rb:1443:in `catch'
+ /opt/local/lib/ruby/1.8/optparse.rb:1443:in `complete'
+ /opt/local/lib/ruby/1.8/optparse.rb:1256:in `parse_in_order'
+ /opt/local/lib/ruby/1.8/optparse.rb:1249:in `catch'
+ /opt/local/lib/ruby/1.8/optparse.rb:1249:in `parse_in_order'
+ /opt/local/lib/ruby/1.8/optparse.rb:1243:in `order!'
+ /opt/local/lib/ruby/1.8/optparse.rb:1334:in `permute!'
+ /opt/local/lib/ruby/1.8/optparse.rb:1355:in `parse!'
+ /Users/volodakolesnikov/code/sdocrails-site/lib/sdoc_site/automation.rb:129:in `merge_builds'
+ sdoc-site.rb:72:in `try_redirecting_to_closest_minor_or_merging'
+ sdoc-site.rb:26:in `GET (?-mix:\/doc\/([^\/]+)\/([^\/]*))'127.0.0.1 - - [14/Apr/2009 14:17:06] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 500 30 0.6069
+127.0.0.1 - - [14/Apr/2009 14:17:06] "GET /favicon.ico " 404 18 0.0007
+OptionParser::InvalidOption - invalid option: --urls:
+ /opt/local/lib/ruby/1.8/optparse.rb:1445:in `complete'
+ /opt/local/lib/ruby/1.8/optparse.rb:1443:in `catch'
+ /opt/local/lib/ruby/1.8/optparse.rb:1443:in `complete'
+ /opt/local/lib/ruby/1.8/optparse.rb:1256:in `parse_in_order'
+ /opt/local/lib/ruby/1.8/optparse.rb:1249:in `catch'
+ /opt/local/lib/ruby/1.8/optparse.rb:1249:in `parse_in_order'
+ /opt/local/lib/ruby/1.8/optparse.rb:1243:in `order!'
+ /opt/local/lib/ruby/1.8/optparse.rb:1334:in `permute!'
+ /opt/local/lib/ruby/1.8/optparse.rb:1355:in `parse!'
+ /Users/volodakolesnikov/code/sdocrails-site/lib/sdoc_site/automation.rb:129:in `merge_builds'
+ sdoc-site.rb:72:in `try_redirecting_to_closest_minor_or_merging'
+ sdoc-site.rb:26:in `GET (?-mix:\/doc\/([^\/]+)\/([^\/]*))'127.0.0.1 - - [14/Apr/2009 14:17:30] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 500 30 0.0049
+127.0.0.1 - - [14/Apr/2009 14:17:30] "GET /favicon.ico " 404 18 0.0006
+config.ru:21: warning: Sinatra.application is deprecated; use Sinatra::Application instead.
+127.0.0.1 - - [14/Apr/2009 14:18:38] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 200 735 0.2428
+127.0.0.1 - - [14/Apr/2009 14:18:39] "GET /favicon.ico " 404 18 0.0005
+127.0.0.1 - - [14/Apr/2009 14:18:44] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 200 735 0.0035
+127.0.0.1 - - [14/Apr/2009 14:18:47] "GET /doc/nokogiri-v1.2.3_rack-v0.9/ " 302 - 0.9487
+127.0.0.1 - - [14/Apr/2009 14:18:48] "GET /favicon.ico " 404 18 0.0007
+127.0.0.1 - - [14/Apr/2009 14:19:07] "GET /doc/rack_nokogiri " 302 - 0.0006
+127.0.0.1 - - [14/Apr/2009 14:19:07] "GET /doc/rack_nokogiri/ " 302 - 0.0009
+127.0.0.1 - - [14/Apr/2009 14:19:19] "GET /doc/nokogiri_rack_sinatra/ " 404 18 0.0010
+127.0.0.1 - - [14/Apr/2009 14:19:27] "GET /doc/nokogiri_rack_haml/ " 302 - 0.0010
+RDoc::Error - /Users/volodakolesnikov/code/sdocrails-site/public/doc/haml-v2.1.1 does not seem to be an sdoc directory:
+ /Users/volodakolesnikov/code/sdocrails-site/lib/sdoc_site/automation.rb:129:in `merge_builds'
+ sdoc-site.rb:72:in `try_redirecting_to_closest_minor_or_merging'
+ sdoc-site.rb:26:in `GET (?-mix:\/doc\/([^\/]+)\/([^\/]*))'127.0.0.1 - - [14/Apr/2009 14:19:27] "GET /doc/haml-v2.1.1_nokogiri-v1.2.3_rack-v0.9/ " 500 30 0.0053
+127.0.0.1 - - [14/Apr/2009 14:20:08] "GET /doc/rack_nokogiri_haml " 302 - 0.0006
+127.0.0.1 - - [14/Apr/2009 14:20:08] "GET /doc/rack_nokogiri_haml/ " 302 - 0.0010
+127.0.0.1 - - [14/Apr/2009 14:20:09] "GET /doc/haml-v2.0.9_nokogiri-v1.2.3_rack-v0.9/ " 302 - 0.9676

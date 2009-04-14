@@ -57,6 +57,13 @@ task :remerge_all_builds do
   end
 end
 
+desc "Cleanup oldies"
+task :cleanup_oldies do
+  a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
+  a.cleanup_oldies
+  a.generate_index
+end
+
 desc "Remerge all merged builds"
 task :rebuild_all_docs do
   builds = SDocSite::Builds::List.new File.join('.', 'public', 'doc')
