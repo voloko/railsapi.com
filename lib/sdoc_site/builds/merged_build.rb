@@ -22,7 +22,7 @@ class SDocSite::Builds::MergedBuild
   end
   
   def to_s
-    @original || @builds.join('_')
+    @original || @builds.sort.join('_')
   end
   
   def same_minor? merged
@@ -30,6 +30,15 @@ class SDocSite::Builds::MergedBuild
     sorted = merged.builds.sort
     @builds.sort.each_with_index do |build, index|
       return false unless build.same_minor?(sorted[index])
+    end
+    return true
+  end
+  
+  def same_names? names
+    return false if builds.size != names.size
+    sorted = names.sort
+    @builds.sort.each_with_index do |build, index|
+      return false unless build.name == sorted[index]
     end
     return true
   end

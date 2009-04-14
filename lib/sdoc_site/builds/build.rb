@@ -1,3 +1,5 @@
+require "sdoc_site/version"
+
 class SDocSite::Builds::Build
   include Comparable
   include SDocSite::Builds
@@ -13,6 +15,18 @@ class SDocSite::Builds::Build
   
   def version
     @versions.max
+  end
+  
+  def versioned_builds
+    @versions.inject([]) do |result, version|
+      result << Build.new(@name, [version])
+    end
+  end
+  
+  def each_versioned_build &block
+    @versions.each do |version|
+      yield Build.new(@name, [version])
+    end
   end
   
   def self.from_str str
