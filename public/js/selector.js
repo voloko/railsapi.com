@@ -160,7 +160,7 @@ jQuery.versionSelector = function(element, versions, sizes) {
             item = items[i]
             parts[parts.length] = item[0].replace(/[_-]/g, '') + '-' + item[1].replace(/[_-]/g, '');
         };
-        path = parts.join('_');
+        path = parts.sort().join('_');
         if (parts.length) {
             $('#download').attr('href', '/doc/' + path + '/rdoc.zip');
             $('#browse').attr('href', '/doc/' + path + '/');
