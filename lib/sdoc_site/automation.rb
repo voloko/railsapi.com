@@ -63,7 +63,7 @@ class SDocSite::Automation
     to_remove = []
     @builds.simple_builds.each do |build|
       current = nil
-      build.each_versioned_build do |versioned|
+      build.versioned_builds.sort.each do |versioned|
         to_remove << current if current && current.same_minor?(versioned)
         current = versioned
       end
