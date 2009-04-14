@@ -5,3 +5,4 @@ rails/
 public/doc/
 versions.yaml
 public/index.html
+sinatra.log
