@@ -51,7 +51,11 @@ protected
     options << '--main' << 'README' if File.exist? 'README'
     
     file_list = Rake::FileList.new
+    # add if any
     file_list.include('README')
+    file_list.include('COPYING')
+    file_list.include('INSTALL')
+    
     file_list.include('*.rdoc')
     file_list.include('lib/**/*.rb')
     

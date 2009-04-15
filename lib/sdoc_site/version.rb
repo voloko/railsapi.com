@@ -6,12 +6,18 @@ class SDocSite::Version
   attr_accessor :major, :minor, :tiny, :other
   
   def initialize(tagname = nil)
-    @tag = tagname
+    @tag   = tagname
+    @major = @minor = '0'
+    @tiny  = @other = ''
     m = tagname.match(/\D*(\d+)\.(\d+)(?:\.(\d+)(.*)?)?/)
-    @major = m[1]
-    @minor = m[2]
-    @tiny  = m[3] || ''
-    @other = m[4] || ''
+    if m
+      @major = m[1]
+      @minor = m[2]
+      @tiny  = m[3] || ''
+      @other = m[4] || ''
+      @tiny  = @tiny.gsub(/[^\d\w]/, '')
+      @other = @other.gsub(/[^\d\w]/, '')
+    end
   end
 
   def <=>(version)

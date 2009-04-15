@@ -288,6 +288,7 @@ protected
     require "sdoc_site/automation/sinatra"
     require "sdoc_site/automation/authlogic"
     require "sdoc_site/automation/rspecrails"
+    require "sdoc_site/automation/awss3"
     @automations = []
     @automations << Automation::Ruby.new(self)
     @automations << Automation::Rails.new(self)
@@ -299,5 +300,6 @@ protected
     @automations << Automation::RSpec.new(self)
     @automations << Automation::Sinatra.new(self)
     @automations << Automation::RSpecRails.new(self)
+    @automations << Automation::Awss3.new(self)
   end
 end

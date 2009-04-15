@@ -12,8 +12,6 @@ protected
     options << "-o" << target
     options << '--line-numbers' 
     options << '--charset' << 'utf-8'
-    options << '-D' << '1'
-    options << '--threads' << '1' # rdoc somehow fails to join thread after build
     options << '--title' << 'RSpec'
     options << '-T' << 'direct'
     if File.exists? 'README.rdoc'
