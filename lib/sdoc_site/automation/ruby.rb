@@ -48,6 +48,7 @@ protected
   def run_sdoc_1_8 target
     options = []
     options << "-o" << target
+    options << "-a"
     options << '--line-numbers' 
     options << '--main' << 'README'
     options << '--title' << 'Ruby'
@@ -78,6 +79,7 @@ protected
   def run_sdoc_1_9 target
     options = []
     options << "-o" << target
+    options << "-a"
     options << '--line-numbers' 
     options << '-T' << 'direct'
     options << '--title' << 'Ruby'
