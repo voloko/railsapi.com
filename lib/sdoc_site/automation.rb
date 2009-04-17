@@ -1,7 +1,7 @@
 require "fileutils"
 require "pathname"
-require "sdoc"
 require "rubygems"
+require "sdoc"
 require "haml"
 require 'tmpdir'
 require "sdoc_site/builds"
