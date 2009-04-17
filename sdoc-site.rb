@@ -12,19 +12,25 @@ get %r{/doc/([^/]+)/([^/]*)} do
   list = SDocSite::Builds::List.new(File.join('public', 'doc'))
   locks = SDocSite::Locks.new('lock')
   
-  if path.match(SDocSite::Builds::MERGED_BUILD_REGEXP)
-    list.merged_builds.each do |merged|
-      pass if merged.to_s == path # build exists but we still get to sinatra => /doc/build-v1_buildx-v2/something_unexistent
+  begin
+    if path.match(SDocSite::Builds::MERGED_BUILD_REGEXP)
+      list.merged_builds.each do |merged|
+        pass if merged.to_s == path # build exists but we still get to sinatra => /doc/build-v1_buildx-v2/something_unexistent
+      end
+      if locks.locked? path
+        return haml(:building, :locals => {:build => path})
+      end
     end
-    if locks.locked? path
-      return haml(:building, :locals => {:build => path})
-    end
+
+    try_redirecting_to_closest_minor list, path, remainder
+    try_redirecting_to_max_version list, path, remainder
+    try_redirecting_to_closest_minor_or_merging locks, list, path, remainder
+    try_redirecting_to_max_merged_version list, path, remainder
+  rescue Exception => e
+    p e
+    p e.backtrace.to_s
   end
   
-  try_redirecting_to_closest_minor list, path, remainder
-  try_redirecting_to_max_version list, path, remainder
-  try_redirecting_to_closest_minor_or_merging locks, list, path, remainder
-  try_redirecting_to_max_merged_version list, path, remainder
   
   pass
 end
@@ -71,11 +77,15 @@ def try_redirecting_to_closest_minor_or_merging locks, list, path, remainder
     end
     
     if goto_build.to_s == path #should merge
-      locks.lock path
-      require "sdoc_site/automation"
-      a = SDocSite::Automation.new File.expand_path(list.root)
-      a.merge_builds goto_build
-      a.generate_index
+      begin
+        locks.lock path
+        require "sdoc_site/automation"
+        a = SDocSite::Automation.new File.expand_path(list.root)
+        a.merge_builds goto_build
+        a.generate_index
+      ensure
+        locks.unlock path
+      end
     end
     
     # reload or redirect
@@ -104,6 +114,11 @@ class SDocSite::Locks
   
   def locked? name
     File.exists? File.join(@root, name)
+  end
+  
+  def unlock name
+    require 'fileutils'
+    FileUtils.rm_rf File.join(@root, name)
   end
   
   def lock name
