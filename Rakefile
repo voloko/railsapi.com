@@ -50,6 +50,7 @@ task :remerge_all_builds do
     begin
       a.merge_builds build
       a.generate_index
+      GC.start
     rescue Exception => e
       puts e.to_s
       puts e.backtrace.to_s
@@ -73,6 +74,7 @@ task :rebuild_all_docs do
       begin
         a.rebuild_version build.name, version.to_s
         a.generate_index
+        GC.start
       rescue Exception => e
         puts e.to_s
         puts e.backtrace.to_s
