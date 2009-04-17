@@ -15,8 +15,8 @@ class SDocSite::Version
       @minor = m[2]
       @tiny  = m[3] || ''
       @other = m[4] || ''
-      @tiny  = @tiny.gsub(/[^\d\w]/, '')
-      @other = @other.gsub(/[^\d\w]/, '')
+      @tiny  = @tiny.gsub(/[^\d\w.]/, '')
+      @other = @other.gsub(/[^\d\w.]/, '')
     end
   end
 
