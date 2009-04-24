@@ -48,9 +48,11 @@ task :remerge_all_builds do
   a = SDocSite::Automation.new File.expand_path(File.join('.', 'public', 'doc')), {:debug => 1}
   builds.merged_builds.each do |build|
     begin
-      a.merge_builds build
-      a.generate_index
-      GC.start
+      ENV['builds'] = build.to_s
+      `rake merge_builds`
+      # a.merge_builds build
+      # a.generate_index
+      # GC.start
     rescue Exception => e
       puts e.to_s
       puts e.backtrace.to_s
