@@ -49,7 +49,7 @@ task :remerge_all_builds do
   builds.merged_builds.each do |build|
     begin
       ENV['builds'] = build.to_s
-      `rake merge_builds`
+      puts `rake merge_builds`
       # a.merge_builds build
       # a.generate_index
       # GC.start
