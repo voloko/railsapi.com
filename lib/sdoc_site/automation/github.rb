@@ -2,22 +2,23 @@ require "sdoc_site/version"
 require "sdoc"
 
 class SDocSite::Automation::Github
-  def initialize automation, url
+  def initialize automation, url, options = {}
     @automation = automation
     @url = url
     @tmp_path = @automation.temp_dir
+    @options = options
   end
   
   def name
-    short_name[0,1].upcase + short_name[1..-1]
+    @options[:name] || short_name[0,1].upcase + short_name[1..-1]
   end
   
   def description
-    ''
+    @options[:description] || ''
   end
   
   def short_name
-    File.basename(@url, '.git').gsub(/[^\w\d]/, '')
+    @options[:short_name] || File.basename(@url, '.git').gsub(/[^\w\d]/, '')
   end
   
   def available_versions
