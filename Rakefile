@@ -74,9 +74,12 @@ task :rebuild_all_docs do
   builds.simple_builds.each do |build|
     build.versions.each do |version|
       begin
-        a.rebuild_version build.name, version.to_s
-        a.generate_index
-        GC.start
+        ENV['name'] = build.name
+        ENV['version'] = version.to_s
+        puts `rake rebuild_version`
+        # a.rebuild_version build.name, version.to_s
+        # a.generate_index
+        # GC.start
       rescue Exception => e
         puts e.to_s
         puts e.backtrace.to_s
