@@ -303,5 +303,6 @@ protected
     @automations << Automation::RSpec.new(self)
     @automations << Automation::RSpecRails.new(self)
     @automations << Automation::Sinatra.new(self)
+    @automations << Automation::Github.new(self, 'git://github.com/brynary/webrat.git')
   end
 end
