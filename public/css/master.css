@@ -307,21 +307,39 @@ h3 i
 .keys table th,
 .keys table td
 {
-    padding: 0 0 1em 0;
+    padding: 0.2em 0 1em 0;
     text-align: left;
+    line-height: 1.4em;
+    vertical-align:top;
 }
 
 .keys table th
 {
+    padding-top: 0;
     padding-right: 1em;
     text-align: right;
     font-weight: normal;
     white-space: nowrap;
+    line-height: 1.8em;
 }
 
 .keys p
 {
     font-size: 0.76em;
+}
+
+.keys i
+{
+    font-style: normal;
+    white-space: nowrap;
+    padding: 0.1em;
+    border: 1px solid #BBB;
+    border-bottom-color: #999;
+    border-top-color: #DDD;
+    background: #EEE;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }
 
 .copy
