@@ -304,6 +304,6 @@ protected
     @automations << Automation::RSpecRails.new(self)
     @automations << Automation::Sinatra.new(self)
     @automations << Automation::Github.new(self, 'git://github.com/brynary/webrat.git')
-    @automations << Automation::Github.new(self, 'git://github.com/macournoyer/thin.git', :short_name => 'Thin', :name => 'Thin web server')
+    @automations << Automation::Github.new(self, 'git://github.com/macournoyer/thin.git', :short_name => 'thin', :name => 'Thin web server')
   end
 end
