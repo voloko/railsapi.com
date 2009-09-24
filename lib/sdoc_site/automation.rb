@@ -289,13 +289,13 @@ protected
     require "sdoc_site/automation/authlogic"
     require "sdoc_site/automation/rspecrails"
     require "sdoc_site/automation/awss3"
-    # require "sdoc_site/automation/eventmachine"
+    require "sdoc_site/automation/eventmachine"
     @automations = []
     @automations << Automation::Ruby.new(self)
     @automations << Automation::Rails.new(self)
     @automations << Automation::Authlogic.new(self)
     @automations << Automation::Awss3.new(self)
-    # @automations << Automation::Eventmachine.new(self)
+    @automations << Automation::Eventmachine.new(self)
     @automations << Automation::Haml.new(self)
     @automations << Automation::Hpricot.new(self)
     @automations << Automation::Nokogiri.new(self)
@@ -304,5 +304,6 @@ protected
     @automations << Automation::RSpecRails.new(self)
     @automations << Automation::Sinatra.new(self)
     @automations << Automation::Github.new(self, 'git://github.com/brynary/webrat.git')
+    @automations << Automation::Github.new(self, 'git://github.com/macournoyer/thin.git', :short_name => 'Thin', :name => 'Thin web server')
   end
 end
