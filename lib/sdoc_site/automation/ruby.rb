@@ -31,7 +31,7 @@ class SDocSite::Automation::Ruby
     @tmp_path = @automation.temp_dir
     doc_dir = @automation.temp_dir
     if version.minor == '8'
-      `svn checkout http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7_99 #{@tmp_path}`
+      `svn checkout http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7_174 #{@tmp_path}`
       in_tmp do
         run_sdoc_1_8 doc_dir
       end
