@@ -11,8 +11,8 @@ desc "Run tests"
 Rake::TestTask.new("test") do |t|
   t.libs << 'tests'
   t.pattern = 'tests/**/*_test.rb'
-  t.warning = true
-  t.verbose = true
+  # t.warning = true
+  # t.verbose = true
 end
 
 desc "Generate sdoc for all new versions"
