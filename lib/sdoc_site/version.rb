@@ -3,7 +3,7 @@ require "sdoc_site"
 class SDocSite::Version
   include Comparable
 
-  attr_accessor :major, :minor, :tiny, :other
+  attr_accessor :major, :minor, :tiny, :other, :beta
   
   def initialize(tagname = nil)
     @tag   = tagname
@@ -17,11 +17,12 @@ class SDocSite::Version
       @other = m[4] || ''
       @tiny  = @tiny.gsub(/[^\d\w.]/, '')
       @other = @other.gsub(/[^\d\w.]/, '')
+      @beta  = !!@other.match(/beta|alpha/) 
     end
   end
 
   def <=>(version)
-    [major, minor, tiny, other] <=> [version.major, version.minor, version.tiny, version.other]
+    [beta ? 0 : 1, major, minor, tiny, other] <=> [version.beta ? 0 : 1, version.major, version.minor, version.tiny, version.other]
   end
 
   def to_s
