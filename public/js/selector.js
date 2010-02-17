@@ -176,8 +176,8 @@ jQuery.versionSelector = function(element, versions, sizes) {
     
     this.element = element;
     this.sizes = sizes;
-    this.init();
     this.bindEvents();
+    this.init();
     
     if (location.hash.indexOf('custom') != -1) {
         $('.preset:eq(2)', element).click();
