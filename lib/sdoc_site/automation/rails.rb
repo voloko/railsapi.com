@@ -27,11 +27,11 @@ protected
   end
   
   def extract_rdoc_includes &block
-    extract_lines(/\.include\(['"]([^'"]+)['"]\)/, block)
+    extract_lines(/\.include\(['"]([^'"]+)['"]\)/, &block)
   end
 
   def extract_rdoc_excludes &block
-    extract_lines(/\.exclude\(['"]([^'"]+)['"]\)/, block)
+    extract_lines(/\.exclude\(['"]([^'"]+)['"]\)/, &block)
   end
 
   def extract_lines(regexp, &block)
