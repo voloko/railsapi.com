@@ -11,6 +11,7 @@ class SDocSite::Builds::Build
   def initialize(name, versions = [])
     @name = name
     @versions = versions
+    @original = nil
   end
   
   def version

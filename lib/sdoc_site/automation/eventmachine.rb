@@ -3,7 +3,7 @@ require "sdoc_site/automation/github"
 
 class SDocSite::Automation::Eventmachine < SDocSite::Automation::Github
   def initialize automation
-    super automation, 'git://github.com/eventmachine/eventmachine.git', :name => 'EventMachine'
+    super automation, 'git://github.com/eventmachine/eventmachine.git', :name => 'EventMachine', :short_name => 'eventmachine'
   end
   
   def build_doc version
