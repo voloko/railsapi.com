@@ -27,7 +27,7 @@ jQuery.versionSelector = function(element, versions, sizes) {
                     this.gemVersions.push(versions[i]);
             }
         };
-        $('.preset_ruby', element).triggerHandler('click');
+        $('.preset_rails', element).triggerHandler('click');
     }
     
     this.bindEvents = function() {
