@@ -35,6 +35,8 @@ class SDocSite::Automation::Github
     `git clone #{@url} #{@tmp_path}`
     in_tmp do
       `git checkout #{version.to_tag}`
+
+      @version = version
       run_sdoc doc_dir
     end
     doc_dir
