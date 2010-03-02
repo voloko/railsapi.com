@@ -19,6 +19,14 @@ protected
     file_list = Rake::FileList.new
     extract_rdoc_includes.each {|i| file_list.include(i) }
     extract_rdoc_excludes.each {|i| file_list.exclude(i) }
+    
+    # dirty hack for missing lines in rails 3-beta
+    if @version == SDocSite::Version.new('v3.0.0.beta1')
+      file_list.include('activemodel/README')
+      file_list.include('activemodel/CHANGELOG')
+      file_list.include('activemodel/lib/active_model/**/*.rb')      
+    end
+    
     FileUtils.cp 'railties/README', './README'
     options << './README'
     options += file_list
