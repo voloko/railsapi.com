@@ -16,7 +16,7 @@ class SDocSite::Version
       @tiny  = m[3] || ''
       @other = m[4] || ''
       @tiny  = @tiny.gsub(/[^\d\w.]/, '')
-      @other = @other.gsub(/[^\d\w.]/, '')
+      @other = @other.gsub(/[^\d\w]/, '')
       @beta  = !!@other.match(/beta|alpha/) 
     end
   end
