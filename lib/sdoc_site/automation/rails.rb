@@ -29,9 +29,10 @@ protected
     
     FileUtils.cp 'railties/README', './README' if File.exists? 'railties/README'
     options << './README'
+    options << './README.rdoc'
     options += file_list
     RDoc::RDoc.new.document(options)
-    FileUtils.rm './README'
+    FileUtils.rm './README' if File.exists? 'railties/README'
   end
   
   def extract_rdoc_includes &block
