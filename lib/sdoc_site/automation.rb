@@ -269,7 +269,7 @@ protected
       item = {
         "name" => auto.name,
         "href" => build.name,
-        "versions" => build.versions.sort.reverse.map {|v| v.to_tag},
+        "versions" => build.versions.sort.reverse.map {|v| v.to_tag },
         "description" => auto.description
       }
       result << item

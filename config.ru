@@ -18,4 +18,4 @@ log = ::File.new("sinatra.log", "a")
 $stdout.reopen(log)
 $stderr.reopen(log)
 
-run Sinatra.application
+run Sinatra::Application
