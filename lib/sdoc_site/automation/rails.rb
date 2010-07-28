@@ -27,7 +27,7 @@ protected
       file_list.include('activemodel/lib/active_model/**/*.rb')      
     end
     
-    FileUtils.cp 'railties/README', './README'
+    FileUtils.cp 'railties/README', './README' if File.exists? 'railties/README'
     options << './README'
     options += file_list
     RDoc::RDoc.new.document(options)
