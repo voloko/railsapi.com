@@ -26,9 +26,6 @@ get %r{/doc/([^/]+)/([^/]*)} do
     try_redirecting_to_max_version list, path, remainder
     try_redirecting_to_closest_minor_or_merging locks, list, path, remainder
     try_redirecting_to_max_merged_version list, path, remainder
-  rescue Exception => e
-    p e
-    p e.backtrace.to_s
   end
   
   
