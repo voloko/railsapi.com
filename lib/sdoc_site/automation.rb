@@ -281,7 +281,7 @@ protected
     require "sdoc_site/automation/ruby"
     require "sdoc_site/automation/rails"
     require "sdoc_site/automation/haml"
-    require "sdoc_site/automation/hpricot"
+    #require "sdoc_site/automation/hpricot"
     require "sdoc_site/automation/nokogiri"
     require "sdoc_site/automation/rack"
     require "sdoc_site/automation/rspec"
@@ -297,7 +297,7 @@ protected
     @automations << Automation::Awss3.new(self)
     @automations << Automation::Eventmachine.new(self)
     @automations << Automation::Haml.new(self)
-    @automations << Automation::Hpricot.new(self)
+    #@automations << Automation::Hpricot.new(self)
     @automations << Automation::Nokogiri.new(self)
     @automations << Automation::Rack.new(self)
     @automations << Automation::RSpec.new(self)
