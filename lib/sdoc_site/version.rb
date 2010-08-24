@@ -6,7 +6,7 @@ class SDocSite::Version
   attr_accessor :major, :minor, :tiny, :other, :beta
   
   def initialize(tagname = nil)
-    @tag   = tagname
+    @tag   = tagname.gsub(/[^\w\d.]/, '')
     @major = @minor = '0'
     @tiny  = @other = ''
     m = tagname.match(/\D*(\d+)\.(\d+)(?:\.(\d+)(.*)?)?/)
